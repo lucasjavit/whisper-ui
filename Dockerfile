@@ -9,14 +9,14 @@ WORKDIR /app
 # Copia package.json e package-lock.json para instalar dependências
 COPY package*.json ./
 
-# Instala dependências
+# Instala dependências do projeto
 RUN npm install
 
-# Copia todo o código do projeto
+# Copia todo o restante do código
 COPY . .
 
-# Build de produção do Angular
-RUN ng build --configuration production
+# Build de produção usando CLI local com npx
+RUN npx ng build --configuration production
 
 # ===========================
 # Etapa 2: Servir com Nginx
