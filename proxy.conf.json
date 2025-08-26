@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://whisper-api-production.up.railway.app",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

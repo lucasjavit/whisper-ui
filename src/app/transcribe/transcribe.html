@@ -1,0 +1,25 @@
+<!-- transcribe.html -->
+<div class="transcribe-container">
+    <h2>Transcrição de Áudio</h2>
+  
+    <input type="file" (change)="onFileSelected($event)" />
+    <button (click)="onSubmit()" [disabled]="!selectedFile || processing">
+      {{ processing ? 'Processando...' : 'Enviar' }}
+    </button>
+  
+    @if (processing) {
+      <p>Progresso: {{ progressPercent }}%</p>
+    }
+  
+    @if (!processing && transcription) {
+      <h3>Resultado:</h3>
+      <div class="response-box">
+        <p>{{ transcription }}</p>
+      </div>
+  
+      <h4>Baixar Transcrição:</h4>
+      <button (click)="download('txt')">TXT</button>
+      <button (click)="download('srt')">SRT</button>
+    }
+  </div>
+  

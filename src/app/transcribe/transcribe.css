@@ -1,0 +1,15 @@
+.word-like {
+    border: 1px solid #ccc;
+    padding: 16px;
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+    background-color: #fff;
+    font-family: 'Calibri', 'Segoe UI', sans-serif;
+    font-size: 14pt;
+    line-height: 1.5;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+    white-space: pre-wrap; /* mantém quebras de linha */
+  }
+  
