@@ -12,11 +12,14 @@ COPY package*.json ./
 # Instala dependências do projeto
 RUN npm install
 
-# Copia todo o restante do código
+# Copia o restante do código
 COPY . .
 
-# Build de produção usando CLI local com npx
-RUN npx ng build --configuration production
+# Garante permissão de execução no binário do Angular CLI
+RUN chmod +x node_modules/.bin/ng
+
+# Executa o build de produção usando o caminho direto
+RUN ./node_modules/.bin/ng build --configuration production
 
 # ===========================
 # Etapa 2: Servir com Nginx
@@ -30,8 +33,6 @@ COPY --from=build /app/dist/whisper-ui/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expõe a porta padrão do Nginx
-ARG PORT=8080
-ENV PORT=$PORT
 EXPOSE 80
 
 # Comando padrão para iniciar Nginx
