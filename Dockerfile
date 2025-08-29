@@ -32,7 +32,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Expõe a porta padrão do Nginx
 ARG PORT=8080
 ENV PORT=$PORT
-EXPOSE $PORT
+EXPOSE 80
 
 # Comando padrão para iniciar Nginx
 CMD ["nginx", "-g", "daemon off;"]
