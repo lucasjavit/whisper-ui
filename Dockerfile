@@ -24,12 +24,12 @@ RUN npx ng build --configuration production
 FROM nginx:alpine
 
 # Copia os arquivos buildados do Angular para o Nginx
-COPY --from=build /app/dist/whisper-ui /usr/share/nginx/html
+COPY --from=build /app/dist/whisper-ui/browser /usr/share/nginx/html
 
 # Copia configuração do Nginx para habilitar proxy /api
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expõe a porta 80
+# Expõe a porta padrão do Nginx
 EXPOSE 80
 
 # Comando padrão para iniciar Nginx
