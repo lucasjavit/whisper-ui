@@ -30,7 +30,9 @@ COPY --from=build /app/dist/whisper-ui/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expõe a porta padrão do Nginx
-EXPOSE 80
+ARG PORT=8080
+ENV PORT=$PORT
+EXPOSE $PORT
 
 # Comando padrão para iniciar Nginx
 CMD ["nginx", "-g", "daemon off;"]
